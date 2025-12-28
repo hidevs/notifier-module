@@ -1,0 +1,402 @@
+{
+	"info": {
+		"_postman_id": "b3b0ea6e-fe06-46f7-bd6c-4aa4bf94e53d",
+		"name": "Notifier - Module",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "43452924",
+		"_collection_link": "https://webnegah.postman.co/workspace/Tond~bbb68ac0-0c5e-42bb-884c-72ba973e4d5b/collection/43452924-b3b0ea6e-fe06-46f7-bd6c-4aa4bf94e53d?action=share&source=collection_link&creator=43452924"
+	},
+	"item": [
+		{
+			"name": "RPC",
+			"item": [
+				{
+					"name": "Mail",
+					"item": [
+						{
+							"name": "Smtp",
+							"item": [
+								{
+									"name": "Smtp | Send",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept-Encoding",
+												"value": " gzip",
+												"type": "text"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"id\": 1,\n    \"jsonrpc\": \"2.0\",\n    \"method\": \"mail@send\",\n    \"params\": {\n        \"provider\": \"smtp\",\n        \"subject\": \"Test mail@send\",\n        \"html\": \"{{mail_html}}\",\n        \"to\": {\n            \"name\": \"JalalLinuX\",\n            \"address\": \"smjjalalzadeh93@gmail.com\"\n        }\n    }\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{host}}/notifier/rpc",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"notifier",
+												"rpc"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Smtp | Send Template",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept-Encoding",
+												"value": " gzip",
+												"type": "text"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"id\": 2,\n    \"jsonrpc\": \"2.0\",\n    \"method\": \"mail@send\",\n    \"params\": {\n        \"provider\": \"smtp\",\n        \"subject\": \"Test mail@send\",\n        \"html\": \"{{mail_html}}\",\n        \"to\": {\n            \"name\": \"JalalLinuX\",\n            \"address\": \"smjjalalzadeh93@gmail.com\"\n        }\n    }\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{host}}/notifier/rpc",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"notifier",
+												"rpc"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Sms",
+					"item": [
+						{
+							"name": "Kavenegar",
+							"item": [
+								{
+									"name": "Kavenegar | Send",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept-Encoding",
+												"value": " gzip",
+												"type": "text"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"id\": 3,\n    \"jsonrpc\": \"2.0\",\n    \"method\": \"sms@send\",\n    \"params\": {\n        \"provider\": \"kavenegar\",\n        \"message\": \"Test sms@send:kavenegar\",\n        \"to\": [\n            \"+989177876563\"\n        ]\n    }\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{host}}/notifier/rpc",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"notifier",
+												"rpc"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Kavenegar | Send Pattern",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept-Encoding",
+												"value": " gzip",
+												"type": "text"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"id\": 4,\n    \"jsonrpc\": \"2.0\",\n    \"method\": \"sms@sendPattern\",\n    \"params\": {\n        \"provider\": \"kavenegar\",\n        \"to\": \"+989177876563\",\n        \"template\": \"webnegah-dev\",\n        \"tokens\": [\n            \"token-1\",\n            \"token-2\",\n            \"token-3\"\n        ]\n    }\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{host}}/notifier/rpc",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"notifier",
+												"rpc"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "SmsIr",
+							"item": [
+								{
+									"name": "SmsIr | Send",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept-Encoding",
+												"value": " gzip",
+												"type": "text"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"id\": 5,\n    \"jsonrpc\": \"2.0\",\n    \"method\": \"sms@send\",\n    \"params\": {\n        \"provider\": \"smsir\",\n        \"message\": \"Test sms@send:smsir\",\n        \"to\": [\n            \"+989177876563\"\n        ]\n    }\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{host}}/notifier/rpc",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"notifier",
+												"rpc"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "SmsIr | Send Pattern",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept-Encoding",
+												"value": " gzip",
+												"type": "text"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"id\": 6,\n    \"jsonrpc\": \"2.0\",\n    \"method\": \"sms@sendPattern\",\n    \"params\": {\n        \"provider\": \"smsir\",\n        \"to\": \"+989177876563\",\n        \"template\": \"265878\",\n        \"tokens\": [\n            {\n                \"name\": \"MOBILE\",\n                \"value\": \"09177876563\"\n            },\n            {\n                \"name\": \"STATUS\",\n                \"value\": \"فعال\"\n            }\n        ]\n    }\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{host}}/notifier/rpc",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"notifier",
+												"rpc"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Push",
+					"item": [
+						{
+							"name": "FCM",
+							"item": [
+								{
+									"name": "FCM | Send",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"id\": 7,\n    \"jsonrpc\": \"2.0\",\n    \"method\": \"push@send\",\n    \"params\": {\n        \"provider\": \"fcm\",\n        \"tokens\": [\n            \"{{fcm_device_token}}\"\n        ],\n        \"title\": \"Test notification title\",\n        \"body\": \"Test notification body\",\n        // \"icon\": \"https://firebase.google.com/images/social.png\",\n        \"data\": {\n            \"key\": \"value\"\n        }\n    }\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{host}}/notifier/rpc",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"notifier",
+												"rpc"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "FCM | Send Multicast",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"id\": 8,\n    \"jsonrpc\": \"2.0\",\n    \"method\": \"push@sendMulticast\",\n    \"params\": {\n        \"provider\": \"fcm\",\n        \"tokens\": [\n            \"{{fcm_device_token}}\"\n        ],\n        \"title\": \"Test notification title\",\n        \"body\": \"Test notification body\",\n        // \"icon\": \"https://firebase.google.com/images/social.png\",\n        \"data\": {\n            \"key\": \"value\"\n        }\n    }\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{host}}/notifier/rpc",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"notifier",
+												"rpc"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "RPC | Docs",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/notifier/rpc",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"notifier",
+								"rpc"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "host",
+			"value": "192.168.3.99:8000",
+			"type": "string"
+		},
+		{
+			"key": "mail_html",
+			"value": "<!DOCTYPE html><html lang=\\\"en\\\"><head><meta charset=\\\"UTF-8\\\"><title>Email Example</title></head><body><table width=\\\"100%\\\" cellspacing=\\\"0\\\" cellpadding=\\\"0\\\" border=\\\"0\\\"><tr><td><table width=\\\"600\\\" cellspacing=\\\"0\\\" cellpadding=\\\"0\\\" border=\\\"0\\\" align=\\\"center\\\"><tr><td><h1>Welcome to our Newsletter!</h1><p>Dear Subscriber,</p><p>We're excited to have you on board. Stay tuned for our latest updates and news!</p><p>Regards,</p><p>The Newsletter Team</p></td></tr><tr><td><table width=\\\"100%\\\" cellspacing=\\\"0\\\" cellpadding=\\\"0\\\" border=\\\"0\\\" style=\\\"margin-top: 20px; background-color: #f1f1f1;\\\"><tr><td><h2>Latest Articles</h2></td></tr><tr><td><h3>Article 1</h3><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p><p><a href=\\\"#\\\">Read more</a></p></td></tr><tr><td><h3>Article 2</h3><p>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><p><a href=\\\"#\\\">Read more</a></p></td></tr></table></td></tr><tr><td><table width=\\\"100%\\\" cellspacing=\\\"0\\\" cellpadding=\\\"0\\\" border=\\\"0\\\" style=\\\"margin-top: 20px;\\\"><tr><td align=\\\"center\\\"><p>Don't miss out, <a href=\\\"#\\\">subscribe now!</a></p></td></tr></table></td></tr></table></td></tr></table></body></html>",
+			"type": "string"
+		},
+		{
+			"key": "fcm_device_token",
+			"value": "d-s0f-zwjQAyUqw11UXFUv:APA91bHhFGlmpeo-4CpUc_-SbwrR2KYUqhAuJyR4KAsqq-i6gIdoOVs_FfJJsDHTkIIiJl14f1pi8VfNgQDzrc9ikwDUJNNUt62aytawUZvUNw9Q_qTPTww",
+			"type": "string"
+		}
+	]
+}

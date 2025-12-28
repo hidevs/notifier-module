@@ -1,0 +1,49 @@
+{
+    "name": "webnegah/notifier-module",
+    "description": "",
+    "type": "laravel-module",
+    "authors": [
+        {
+            "name": "JalalLinuX",
+            "email": "smjjalalzadeh93@gmail.com"
+        }
+    ],
+    "extra": {
+        "module-dir": "Notifier",
+        "laravel": {
+            "providers": [],
+            "aliases": {
+
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\Notifier\\": "app/",
+            "Modules\\Notifier\\Database\\Factories\\": "database/factories/",
+            "Modules\\Notifier\\Database\\Seeders\\": "database/seeders/"
+        },
+        "files": [
+            "app/macros.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Modules\\Notifier\\Tests\\": "tests/"
+        }
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://git.pc360.ir/webnegah/general-module.git"
+        }
+    ],
+    "require": {
+        "webnegah/general-module": "dev-main",
+        "spatie/laravel-data": "^4.13",
+        "sajya/client": "^1.4",
+        "sajya/server": "^7.0",
+        "kavenegar/laravel": "^1.3",
+        "kreait/laravel-firebase": "^6.0"
+    }
+}
