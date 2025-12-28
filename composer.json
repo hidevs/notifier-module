@@ -1,5 +1,5 @@
 {
-    "name": "webnegah/notifier-module",
+    "name": "hidevs/notifier-module",
     "description": "",
     "type": "laravel-module",
     "authors": [
@@ -32,14 +32,8 @@
             "Modules\\Notifier\\Tests\\": "tests/"
         }
     },
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://git.pc360.ir/webnegah/general-module.git"
-        }
-    ],
     "require": {
-        "webnegah/general-module": "dev-main",
+        "hidevs/general-module": "dev-main",
         "spatie/laravel-data": "^4.13",
         "sajya/client": "^1.4",
         "sajya/server": "^7.0",
