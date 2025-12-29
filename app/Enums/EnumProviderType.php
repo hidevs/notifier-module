@@ -32,6 +32,7 @@ enum EnumProviderType: string
     public function defaultSettingKey(): string
     {
         $driver = strtolower($this->value);
+
         return "notifier.provider.{$driver}.default";
     }
 }

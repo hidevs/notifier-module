@@ -16,12 +16,13 @@ readonly class KavenegarParameters implements Arrayable
 
     public static function make(array $parameters): self
     {
-        $instance = new static();
+        $instance = new static;
         foreach ($parameters as $parameter) {
             if (property_exists($instance, $parameter)) {
                 $instance->{$parameter} = $parameter;
             }
         }
+
         return $instance;
     }
 
