@@ -1,1 +1,1 @@
-cp -n Modules/Media/config/config.php ./config/notifier.php
+cp -n Modules/Notifier/config/config.php ./config/notifier.php
