@@ -2,7 +2,7 @@
 
 namespace Modules\Notifier\Enums;
 
-use Modules\General\Contracts\EnumMethods;
+use Modules\General\Contracts\Enum\EnumMethods;
 use Rawilk\Settings\Facades\Settings;
 
 enum EnumProviderType: string

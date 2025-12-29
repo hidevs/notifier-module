@@ -2,10 +2,10 @@
 
 namespace Modules\Notifier\Repositories;
 
-use Modules\General\Contracts\Repository\ApiBaseRepository;
+use Modules\General\Contracts\Repository\BaseApiRepository;
 use Modules\Notifier\Models\DatabaseNotification;
 
-class DatabaseNotificationRepository extends ApiBaseRepository
+class DatabaseNotificationRepository extends BaseApiRepository
 {
     protected $fieldSearchable = [
         'sender' => '=',

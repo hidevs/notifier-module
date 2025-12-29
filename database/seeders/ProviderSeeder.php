@@ -2,7 +2,7 @@
 
 namespace Modules\Notifier\Database\Seeders;
 
-use Modules\General\Contracts\BaseSeeder;
+use Modules\General\Contracts\Seeder\BaseSeeder;
 use Modules\Notifier\Models\Provider;
 
 class ProviderSeeder extends BaseSeeder

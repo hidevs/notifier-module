@@ -2,7 +2,7 @@
 
 namespace Modules\Notifier\Enums;
 
-use Modules\General\Contracts\EnumMethods;
+use Modules\General\Contracts\Enum\EnumMethods;
 
 enum EnumNotificationStatus: string
 {
