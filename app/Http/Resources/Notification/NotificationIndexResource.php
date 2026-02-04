@@ -3,8 +3,8 @@
 namespace Modules\Notifier\Http\Resources\Notification;
 
 use Illuminate\Http\Request;
+use Modules\General\Contracts\Resource\BaseResource;
 use Modules\General\Http\Resources\EnumResource;
-use Modules\Notifier\Contracts\BaseResource;
 
 class NotificationIndexResource extends BaseResource
 {
