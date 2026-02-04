@@ -32,7 +32,7 @@ class BaseResource extends JsonResource
 
     public function toResponse($request): JsonResponse
     {
-        $resourceResponse = new ResourceResponse($this)->toResponse($request);
+        $resourceResponse = (new ResourceResponse($this))->toResponse($request);
         $resourceResponse->setStatusCode($this->additional['code']);
 
         return $resourceResponse;
