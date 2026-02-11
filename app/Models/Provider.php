@@ -17,14 +17,14 @@ class Provider extends Model
         'drivers' => 'array',
     ];
 
-    public function run(string $method, Notification $notification, ...$params): mixed
+    public function run(string $method, Notifier $notifier, ...$params): mixed
     {
-        return Arr::get($this->drivers, $method)::dispatch($this, $notification, ...$params);
+        return Arr::get($this->drivers, $method)::dispatch($this, $notifier, ...$params);
     }
 
-    public function notifications(): HasMany
+    public function notifiers(): HasMany
     {
-        return $this->hasMany(Notification::class, 'provider_slug', 'slug');
+        return $this->hasMany(Notifier::class, 'provider_slug', 'slug');
     }
 
     public function config(?string $key = null): mixed

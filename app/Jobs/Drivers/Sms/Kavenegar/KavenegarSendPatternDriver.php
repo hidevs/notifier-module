@@ -7,7 +7,7 @@ use Kavenegar\Exceptions\HttpException;
 use Modules\Notifier\Contracts\BaseDriver;
 use Modules\Notifier\Contracts\Traits\KavenegarClient;
 use Modules\Notifier\Enums\EnumNotificationStatus;
-use Modules\Notifier\Models\Notification;
+use Modules\Notifier\Models\Notifier;
 use Modules\Notifier\Models\Provider;
 
 class KavenegarSendPatternDriver extends BaseDriver
@@ -16,12 +16,12 @@ class KavenegarSendPatternDriver extends BaseDriver
 
     public function __construct(
         protected Provider $provider,
-        protected Notification $notification,
+        protected Notifier $notifier,
         private readonly string $template,
         private readonly string $to,
         private readonly array $tokens,
     ) {
-        parent::__construct($provider, $notification);
+        parent::__construct($provider, $notifier);
     }
 
     public function handle(): void
@@ -31,9 +31,9 @@ class KavenegarSendPatternDriver extends BaseDriver
             $this->kavenegar($this->provider->config('api_key'))
                 ->VerifyLookup($this->to, @$this->tokens[0], @$this->tokens[1], @$this->tokens[2], $this->template, null, ...$additionalTokens);
 
-            $this->updateNotification(EnumNotificationStatus::SUCCESS);
+            $this->updateNotifier(EnumNotificationStatus::SUCCESS);
         } catch (ApiException|HttpException|\Exception $e) {
-            $this->updateNotification(
+            $this->updateNotifier(
                 EnumNotificationStatus::FAILED, ['exception' => [
                     'message' => method_exists($e, 'errorMessage') ? $e->errorMessage() : $e->getMessage(),
                     'trace' => array_map(fn ($item) => array_intersect_key($item, array_flip([

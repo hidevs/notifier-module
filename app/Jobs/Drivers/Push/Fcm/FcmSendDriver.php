@@ -7,7 +7,7 @@ use Kreait\Firebase\Messaging\Notification as FcmNotification;
 use Modules\Notifier\Contracts\BaseDriver;
 use Modules\Notifier\Contracts\Traits\FcmClient;
 use Modules\Notifier\Enums\EnumNotificationStatus;
-use Modules\Notifier\Models\Notification;
+use Modules\Notifier\Models\Notifier;
 use Modules\Notifier\Models\Provider;
 
 /** Documentation: https://firebase-php.readthedocs.io/en/7.18.0/cloud-messaging.html#getting-started */
@@ -17,14 +17,14 @@ class FcmSendDriver extends BaseDriver
 
     public function __construct(
         protected Provider $provider,
-        protected Notification $notification,
+        protected Notifier $notifier,
         private readonly string $token,
         private readonly string $title,
         private readonly string $body,
         private readonly ?string $icon = null,
         private readonly array $data = [],
     ) {
-        parent::__construct($provider, $notification);
+        parent::__construct($provider, $notifier);
     }
 
     public function handle(): void
@@ -36,9 +36,9 @@ class FcmSendDriver extends BaseDriver
             ]);
             $this->fcm($this->provider->config('auth'))->sendMulticast($message, [$this->token]);
 
-            $this->updateNotification(EnumNotificationStatus::SUCCESS);
+            $this->updateNotifier(EnumNotificationStatus::SUCCESS);
         } catch (\Throwable $e) {
-            $this->updateNotification(
+            $this->updateNotifier(
                 EnumNotificationStatus::FAILED, ['exception' => [
                     'message' => method_exists($e, 'errorMessage') ? $e->errorMessage() : $e->getMessage(),
                     'trace' => array_map(fn ($item) => array_intersect_key($item, array_flip([

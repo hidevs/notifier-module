@@ -9,7 +9,7 @@ use Modules\Notifier\Contracts\Traits\DatabaseClient;
 use Modules\Notifier\Enums\EnumNotificationStatus;
 use Modules\Notifier\Enums\EnumStorageNotificationType;
 use Modules\Notifier\Models\DatabaseNotification;
-use Modules\Notifier\Models\Notification;
+use Modules\Notifier\Models\Notifier;
 use Modules\Notifier\Models\Provider;
 
 class DatabaseSaveDriver extends BaseDriver
@@ -18,7 +18,7 @@ class DatabaseSaveDriver extends BaseDriver
 
     public function __construct(
         protected Provider $provider,
-        protected Notification $notification,
+        protected Notifier $notifier,
         private readonly string $receiver,
         private readonly string $group,
         private readonly string $title,
@@ -28,7 +28,7 @@ class DatabaseSaveDriver extends BaseDriver
         private readonly ?string $link = null,
         private readonly array $metadata = [],
     ) {
-        parent::__construct($provider, $notification);
+        parent::__construct($provider, $notifier);
     }
 
     public function handle(): void
@@ -36,9 +36,9 @@ class DatabaseSaveDriver extends BaseDriver
         try {
             DatabaseNotification::query()->create($this->data());
 
-            $this->updateNotification(EnumNotificationStatus::SUCCESS);
+            $this->updateNotifier(EnumNotificationStatus::SUCCESS);
         } catch (ApiException|HttpException|\Exception $e) {
-            $this->updateNotification(
+            $this->updateNotifier(
                 EnumNotificationStatus::FAILED, ['exception' => [
                     'message' => method_exists($e, 'errorMessage') ? $e->errorMessage() : $e->getMessage(),
                     'trace' => array_map(fn ($item) => array_intersect_key($item, array_flip([

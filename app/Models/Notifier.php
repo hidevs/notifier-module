@@ -7,9 +7,11 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Modules\General\Contracts\Trait\WithUuidColumn;
 use Modules\Notifier\Enums\EnumNotificationStatus;
 
-class Notification extends Model
+class Notifier extends Model
 {
     use WithUuidColumn;
+
+    protected $table = 'notifiers';
 
     protected $guarded = ['user_id', 'provider_slug', 'request'];
 

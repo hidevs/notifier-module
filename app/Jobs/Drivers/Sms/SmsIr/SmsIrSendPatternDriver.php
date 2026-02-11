@@ -5,7 +5,7 @@ namespace Modules\Notifier\Jobs\Drivers\Sms\SmsIr;
 use Modules\Notifier\Contracts\BaseDriver;
 use Modules\Notifier\Contracts\Traits\SmsIrClient;
 use Modules\Notifier\Enums\EnumNotificationStatus;
-use Modules\Notifier\Models\Notification;
+use Modules\Notifier\Models\Notifier;
 use Modules\Notifier\Models\Provider;
 
 class SmsIrSendPatternDriver extends BaseDriver
@@ -14,12 +14,12 @@ class SmsIrSendPatternDriver extends BaseDriver
 
     public function __construct(
         protected Provider $provider,
-        protected Notification $notification,
+        protected Notifier $notifier,
         private readonly string $template,
         private readonly string $to,
         private readonly array $tokens,
     ) {
-        parent::__construct($provider, $notification);
+        parent::__construct($provider, $notifier);
     }
 
     public function handle(): void
@@ -28,9 +28,9 @@ class SmsIrSendPatternDriver extends BaseDriver
             $this->smsir($this->provider->config('api_key'), $this->provider->config('base_url'))
                 ->verifySend($this->to, $this->template, $this->tokens);
 
-            $this->updateNotification(EnumNotificationStatus::SUCCESS);
+            $this->updateNotifier(EnumNotificationStatus::SUCCESS);
         } catch (\Throwable $e) {
-            $this->updateNotification(
+            $this->updateNotifier(
                 EnumNotificationStatus::FAILED, ['exception' => [
                     'message' => method_exists($e, 'errorMessage') ? $e->errorMessage() : $e->getMessage(),
                     'trace' => array_map(fn ($item) => array_intersect_key($item, array_flip([

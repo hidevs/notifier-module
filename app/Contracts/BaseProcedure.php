@@ -4,7 +4,7 @@ namespace Modules\Notifier\Contracts;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
-use Modules\Notifier\Models\Notification;
+use Modules\Notifier\Models\Notifier;
 use Modules\Notifier\Models\Provider;
 use Sajya\Server\Procedure as RPCProcedure;
 
@@ -19,7 +19,7 @@ abstract class BaseProcedure extends RPCProcedure
         return static::$name.'@'.debug_backtrace()[$debugBacktraceIndex]['function'];
     }
 
-    protected function notification(?string $message = null, array $attributes = []): Notification
+    protected function notification(?string $message = null, array $attributes = []): Notifier
     {
         $attributes = array_merge([
             'user_id' => request()->header('X-User-Id'),
@@ -31,6 +31,6 @@ abstract class BaseProcedure extends RPCProcedure
             ],
         ], $attributes);
 
-        return \request()->provider()->notifications()->create($attributes);
+        return \request()->provider()->notifiers()->create($attributes);
     }
 }
